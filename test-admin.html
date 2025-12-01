@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIN Decoder Admin Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 4px; }
+        .test-info { background: #e7f3ff; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .test-button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .test-button:hover { background: #005a87; }
+        .test-results { margin-top: 20px; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; }
+        .success { color: #155724; background: #d4edda; border-color: #c3e6cb; }
+        .error { color: #721c24; background: #f8d7da; border-color: #f5c6cb; }
+        .code-example { background: #f8f9fa; padding: 15px; border-left: 4px solid #007cba; margin: 15px 0; }
+        pre { margin: 0; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <div class="test-info">
+            <h2>VIN Decoder Admin JavaScript Test</h2>
+            <p>This test page verifies that the admin JavaScript loads without syntax errors and basic functions are available.</p>
+            <p><strong>Note:</strong> Full functionality requires a WordPress environment with proper AJAX endpoints.</p>
+        </div>
+
+        <h3>Test Results:</h3>
+        <div id="test-results" class="test-results">
+            <p>Running JavaScript tests...</p>
+        </div>
+
+        <h3>Test Functions:</h3>
+        <button class="test-button" onclick="testBasicFunctions()">Test Basic Functions</button>
+        <button class="test-button" onclick="testAJAXSetup()">Test AJAX Setup</button>
+        <button class="test-button" onclick="testEventHandlers()">Test Event Handlers</button>
+
+        <h3>Code Examples:</h3>
+        <div class="code-example">
+            <p><strong>Expected vinDecoderAjax object:</strong></p>
+            <pre>window.vinDecoderAjax = {
+    ajax_url: "http://example.com/wp-admin/admin-ajax.php",
+    nonce: "abc123def456",
+    strings: {
+        confirm_delete: "Are you sure you want to delete this VIN decode?",
+        deleting: "Deleting...",
+        error: "Error occurred",
+        no_results: "No VINs found"
+    }
+};</pre>
+        </div>
+    </div>
+
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Mock WordPress admin environment -->
+    <script>
+        // Mock WordPress admin globals
+        window.vinDecoderAjax = {
+            ajax_url: 'http://localhost/wp-admin/admin-ajax.php',
+            nonce: 'test-nonce-admin-12345',
+            strings: {
+                confirm_delete: 'Are you sure you want to delete this VIN decode?',
+                deleting: 'Deleting...',
+                error: 'Error occurred',
+                no_results: 'No VINs found'
+            }
+        };
+
+        // Mock admin page elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create mock admin elements
+            if (!document.getElementById('vin-decoder-results')) {
+                const mockTable = document.createElement('tbody');
+                mockTable.id = 'vin-decoder-results';
+                mockTable.innerHTML = '<tr><td colspan="5">Mock table for testing</td></tr>';
+                document.body.appendChild(mockTable);
+            }
+
+            console.log('Mock admin environment set up');
+        });
+    </script>
+
+    <!-- Load the admin JavaScript -->
+    <script src="assets/js/admin.js"></script>
+
+    <script>
+        // Test functions
+        function testBasicFunctions() {
+            updateTestResults('Testing basic function availability...', '');
+
+            try {
+                // Test if jQuery is loaded
+                if (typeof jQuery !== 'undefined') {
+                    updateTestResults('✓ jQuery loaded', 'success');
+                } else {
+                    updateTestResults('✗ jQuery not loaded', 'error');
+                    return;
+                }
+
+                // Test if vinDecoderAjax is available
+                if (typeof window.vinDecoderAjax !== 'undefined') {
+                    updateTestResults('✓ vinDecoderAjax object available', 'success');
+                } else {
+                    updateTestResults('✗ vinDecoderAjax object not found', 'error');
+                }
+
+                // Test admin functions exist
+                if (typeof initVINDecoderAdmin === 'function') {
+                    updateTestResults('✓ initVINDecoderAdmin function available', 'success');
+                } else {
+                    updateTestResults('✗ initVINDecoderAdmin function not found', 'error');
+                }
+
+                updateTestResults('Basic function tests completed', 'success');
+
+            } catch (error) {
+                updateTestResults('Error during testing: ' + error.message, 'error');
+            }
+        }
+
+        function testAJAXSetup() {
+            updateTestResults('Testing AJAX configuration...', '');
+
+            try {
+                if (window.vinDecoderAjax && window.vinDecoderAjax.ajax_url) {
+                    updateTestResults('✓ AJAX URL configured: ' + window.vinDecoderAjax.ajax_url, 'success');
+                } else {
+                    updateTestResults('✗ AJAX URL not configured', 'error');
+                }
+
+                if (window.vinDecoderAjax && window.vinDecoderAjax.nonce) {
+                    updateTestResults('✓ Security nonce available', 'success');
+                } else {
+                    updateTestResults('✗ Security nonce not available', 'error');
+                }
+
+                updateTestResults('AJAX setup tests completed', 'success');
+
+            } catch (error) {
+                updateTestResults('Error during AJAX testing: ' + error.message, 'error');
+            }
+        }
+
+        function testEventHandlers() {
+            updateTestResults('Testing event handlers...', '');
+
+            try {
+                // Test if event handlers are bound (this is hard to test without DOM elements)
+                updateTestResults('✓ Event handler tests prepared (requires WordPress environment for full testing)', 'success');
+
+                // Test modal functions exist
+                if (typeof showModal === 'function') {
+                    updateTestResults('✓ showModal function available', 'success');
+                } else {
+                    updateTestResults('✗ showModal function not found', 'error');
+                }
+
+                if (typeof closeModal === 'function') {
+                    updateTestResults('✓ closeModal function available', 'success');
+                } else {
+                    updateTestResults('✗ closeModal function not found', 'error');
+                }
+
+                updateTestResults('Event handler tests completed', 'success');
+
+            } catch (error) {
+                updateTestResults('Error during event handler testing: ' + error.message, 'error');
+            }
+        }
+
+        function updateTestResults(message, status) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultClass = status ? ' ' + status : '';
+            resultsDiv.innerHTML += '<p class="' + resultClass + '">' + message + '</p>';
+            console.log(message);
+        }
+
+        // Auto-run basic tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                testBasicFunctions();
+            }, 500);
+        });
+
+        console.log('VIN Decoder admin test page loaded. Check console for detailed logs.');
+    </script>
+</body>
+</html>

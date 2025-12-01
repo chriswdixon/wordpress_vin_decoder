@@ -31,27 +31,77 @@ A comprehensive WordPress plugin that automatically decodes Vehicle Identificati
 ## Installation
 
 ### Requirements
-- WordPress 5.0+
-- PHP 7.4+
-- Contact Form 7 plugin (required)
+- **WordPress**: 5.0 or higher
+- **PHP**: 7.4 or higher
+- **Contact Form 7**: Latest version (required plugin)
+- **MySQL/MariaDB**: 5.6 or higher
+- **Memory**: Minimum 128MB PHP memory limit recommended
+
+### Compatibility
+- ✅ **Tested with WordPress 6.8.3**
+- ✅ **Compatible with PHP 7.4 - 8.3**
+- ✅ **Works with Contact Form 7 v5.0+**
+- ✅ **Supports MySQL 5.6+ and MariaDB 10.0+**
 
 ### Installation Steps
 
+#### Method 1: Upload via WordPress Admin (Recommended)
+
 1. **Download the plugin**
+   - Download the latest release from GitHub
+   - Or clone the repository: `git clone https://github.com/chriswdixon/wordpress_vin_decoder.git`
+
+2. **Install Contact Form 7 first**
+   - Go to WordPress Admin > Plugins > Add New
+   - Search for "Contact Form 7"
+   - Install and activate Contact Form 7
+
+3. **Install VIN Decoder plugin**
+   - Go to WordPress Admin > Plugins > Add New > Upload Plugin
+   - Choose the `vin-decoder.zip` file (or upload the entire plugin folder)
+   - Click "Install Now"
+   - Activate the plugin
+
+4. **Verify installation**
+   - Look for "VIN Decoder" menu in WordPress admin sidebar
+   - Check for any activation notices
+
+#### Method 2: Manual Upload via FTP
+
+1. **Download and extract**
    ```bash
-   git clone https://github.com/chriswdixon/wordpress_vin_decoder.git
+   wget https://github.com/chriswdixon/wordpress_vin_decoder/archive/main.zip
+   unzip main.zip
    ```
 
-2. **Upload to WordPress**
-   - Copy the `wordpress_vin_decoder` folder to `/wp-content/plugins/`
-   - Or use WordPress Admin > Plugins > Add New > Upload Plugin
+2. **Upload via FTP**
+   - Connect to your server via FTP/SFTP
+   - Upload the `wordpress_vin_decoder-main` folder to `/wp-content/plugins/`
+   - Rename the folder to `vin-decoder` (optional)
 
-3. **Activate the plugin**
+3. **Activate plugins**
    - Go to WordPress Admin > Plugins
-   - Find "VIN Decoder for Contact Form 7" and click "Activate"
+   - Activate Contact Form 7 first
+   - Then activate "VIN Decoder for Contact Form 7"
 
-4. **Install Contact Form 7**
-   - If not already installed, install and activate Contact Form 7
+#### Method 3: Composer Installation (Advanced)
+
+```bash
+composer require chriswdixon/wordpress-vin-decoder:dev-main
+```
+
+### Post-Installation Setup
+
+1. **Database tables**: Automatically created on plugin activation
+2. **Default settings**: Plugin comes with sensible defaults
+3. **File permissions**: Ensure plugin folder has proper permissions (755 recommended)
+
+### Troubleshooting Installation
+
+- **Plugin not appearing**: Clear browser cache and check file permissions
+- **Database errors**: Check MySQL user permissions
+- **PHP errors**: Verify PHP version and memory limits
+- **Contact Form 7 missing**: Plugin requires CF7 to function
 
 ## Configuration
 
@@ -233,6 +283,7 @@ wordpress_vin_decoder/
 - Admin dashboard and VIN database
 - Settings page and configuration options
 - Security hardening and performance optimization
+- Tested with WordPress 6.8.3
 
 ## License
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIN Decoder Frontend Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-form { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+        .status { margin-top: 10px; padding: 10px; border-radius: 4px; display: none; }
+        .status.processing { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .status.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .vin-preview { margin-top: 15px; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; display: none; }
+        .vin-preview-title { font-weight: bold; margin-bottom: 10px; }
+        .test-info { background: #e7f3ff; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h2>VIN Decoder Frontend Test</h2>
+        <p>This test page simulates a Contact Form 7 form to test the VIN decoder JavaScript functionality.</p>
+        <p><strong>Note:</strong> This test requires a local WordPress environment with the plugin active to work with AJAX calls.</p>
+    </div>
+
+    <form class="test-form wpcf7-form">
+        <div class="form-group">
+            <label for="vin">Vehicle Identification Number (VIN)</label>
+            <input type="text" id="vin" name="vin" placeholder="Enter 17-character VIN (e.g., 1HGCM82633A123456)" maxlength="17">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="your-name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="your-email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="your-message" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="vin-decoder-preview">
+        <div class="vin-decoder-preview-title">Vehicle Information:</div>
+        <div class="vin-decoder-content"></div>
+    </div>
+
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Load the frontend JavaScript -->
+    <script>
+        // Mock WordPress localization object for testing
+        window.vinDecoderFrontend = {
+            ajax_url: 'http://localhost/wp-admin/admin-ajax.php', // Update this URL
+            nonce: 'test-nonce-12345', // This won't work without WordPress
+            strings: {
+                processing: 'Processing VIN...',
+                error_invalid_vin: 'Invalid VIN format. Please check and try again.',
+                error_decode_failed: 'Failed to decode VIN. Please try again.',
+                error_network: 'Network error. Please try again.',
+                vin_decoded: 'VIN decoded successfully!'
+            },
+            debug: true
+        };
+    </script>
+    <script src="assets/js/frontend.js"></script>
+
+    <script>
+        // Add some test VINs for manual testing
+        console.log('Test VINs you can try:');
+        console.log('- 1HGCM82633A123456 (Honda Accord)');
+        console.log('- 1FTFW1ET1DFC12345 (Ford F-150)');
+        console.log('- JM1BL1U78C1234567 (Mazda 3)');
+
+        // Log when the script initializes
+        console.log('VIN Decoder test page loaded. Check for JavaScript errors in console.');
+    </script>
+</body>
+</html>
