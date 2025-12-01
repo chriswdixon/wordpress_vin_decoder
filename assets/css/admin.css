@@ -1,0 +1,309 @@
+/* VIN Decoder Admin Styles */
+
+.vin-decoder-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.vin-decoder-stat-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.vin-decoder-stat-card h3 {
+    margin: 0 0 10px 0;
+    color: #23282d;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #007cba;
+    margin: 0;
+}
+
+.vin-decoder-popular-makes {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.vin-decoder-popular-makes h3 {
+    margin: 0 0 20px 0;
+    color: #23282d;
+    font-size: 16px;
+}
+
+.makes-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.make-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.make-name {
+    min-width: 120px;
+    font-weight: 500;
+}
+
+.make-count {
+    min-width: 80px;
+    text-align: right;
+    color: #666;
+}
+
+.make-bar {
+    flex: 1;
+    height: 20px;
+    background: #007cba;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.vin-decoder-quick-actions {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.vin-decoder-quick-actions h3 {
+    margin: 0 0 15px 0;
+    color: #23282d;
+    font-size: 16px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Database Page Styles */
+.vin-decoder-filters {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.filter-row input,
+.filter-row select {
+    min-width: 150px;
+}
+
+.vin-decoder-results-info {
+    margin-bottom: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+.vin-decoder-table {
+    background: #fff;
+    border-collapse: collapse;
+}
+
+.vin-decoder-table th,
+.vin-decoder-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.vin-decoder-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #23282d;
+    border-bottom: 2px solid #ddd;
+}
+
+.vin-decoder-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.vin-decoder-table .vin-view-details {
+    color: #007cba;
+    text-decoration: none;
+}
+
+.vin-decoder-table .vin-delete {
+    color: #dc3232;
+}
+
+.vin-decoder-table .vin-delete:hover {
+    color: #a00;
+}
+
+/* Modal Styles */
+.vin-decoder-modal {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.vin-decoder-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.vin-decoder-modal-header {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+
+.vin-decoder-modal-header h3 {
+    margin: 0;
+    color: #23282d;
+}
+
+.vin-decoder-modal-body {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.vin-decoder-modal-footer {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    text-align: right;
+}
+
+.vin-decoder-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.vin-decoder-modal-close:hover {
+    color: #000;
+}
+
+/* VIN Details Styles */
+.vin-details-section {
+    margin-bottom: 20px;
+}
+
+.vin-details-section h4 {
+    margin: 0 0 10px 0;
+    color: #23282d;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.vin-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.vin-detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.vin-detail-label {
+    font-weight: 500;
+    color: #666;
+}
+
+.vin-detail-value {
+    color: #23282d;
+}
+
+/* Loading States */
+.vin-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007cba;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .vin-decoder-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-row input,
+    .filter-row select {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .vin-decoder-table {
+        font-size: 14px;
+    }
+
+    .vin-decoder-table th,
+    .vin-decoder-table td {
+        padding: 8px;
+    }
+}
