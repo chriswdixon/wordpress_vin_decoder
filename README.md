@@ -289,6 +289,21 @@ wordpress_vin_decoder/
 
 This plugin is licensed under the MIT License - see the LICENSE file for details.
 
+## Disclaimer
+
+**This plugin is provided "AS IS" without warranty of any kind, express or implied.** The plugin uses third-party APIs (NHTSA and optionally VinDecoder.eu) over which we have no control. While we strive for reliability, we cannot guarantee:
+
+- The accuracy or availability of VIN decoding data
+- The continued operation of third-party APIs
+- Compatibility with all WordPress configurations
+- Protection against all potential security vulnerabilities
+
+**Use at your own risk.** Always backup your WordPress installation before installing new plugins.
+
+### Professional Support
+
+For enterprise-grade support, custom development, or priority assistance, LeftLane.IO offers professional support contracts. Contact us at [info@leftlane.io](mailto:info@leftlane.io) for details on our support packages.
+
 ## Support
 
 For support and questions:
